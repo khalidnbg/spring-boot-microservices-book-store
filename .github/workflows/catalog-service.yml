@@ -6,6 +6,7 @@ on:
       - catalog-service/**
     branches:
       - '**'
+
 jobs:
   build:
     name: Build
@@ -25,7 +26,7 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Make mvnw executable.
+      - name: Make mvnw executable
         run: chmod +x ./mvnw
 
       - name: Build with Maven
