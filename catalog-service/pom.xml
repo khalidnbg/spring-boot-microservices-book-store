@@ -8,29 +8,36 @@
 		<version>3.5.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.nbg</groupId>
 	<artifactId>catalog-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>catalog-service</name>
 	<description>Catalog Service</description>
 	<url/>
+
 	<licenses>
 		<license/>
 	</licenses>
-	<developers>
+
+    <developers>
 		<developer/>
 	</developers>
-	<scm>
+
+    <scm>
 		<connection/>
 		<developerConnection/>
 		<tag/>
 		<url/>
 	</scm>
-	<properties>
+
+    <properties>
 		<java.version>21</java.version>
         <spotless-maven-plugin.version>3.0.0</spotless-maven-plugin.version>
+        <dockerImageName>nbg/bookstore-${project.artifactId}</dockerImageName>
 	</properties>
-	<dependencies>
+
+    <dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -125,6 +132,12 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+                        <builder>paketobuildpacks/builder-jammy-java-tiny:latest</builder>
+                        <name>${dockerImageName}</name>
+                    </image>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
