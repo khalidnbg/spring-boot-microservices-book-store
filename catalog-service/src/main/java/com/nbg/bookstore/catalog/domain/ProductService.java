@@ -20,7 +20,6 @@ public class ProductService {
         this.properties = properties;
     }
 
-
     public PagedResult<Product> getProducts(int pageNo) {
         Sort sort = Sort.by("name").ascending();
         pageNo = pageNo <= 1 ? 0 : pageNo - 1;
